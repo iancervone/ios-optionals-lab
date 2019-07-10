@@ -1,7 +1,6 @@
 # Optionals lab
 
-Fork and clone this repo. On your fork, answer and commit the follow questions. When you are finished, submit the link to your repo on Canvas.
-
+I'M STILL WORKING ON THIS LAB, I HAVE DONE THE FIRST 7 QUESTIONS BUT WILL BE FINISHING THE REST
 
 ## Question 1
 
@@ -15,12 +14,35 @@ Write 3 different ways of safely unwrapping and printing the value of `userName`
 
 - Method three: Nil coalescing
 
+//print(userName!)
+//force unwrapping the above code will cause a fatal error
+
+if let userName = userName {
+print(userName)
+} else {
+print("You got no name!")
+}
+//the above code is Optional binding
+
+var name = userName ?? "No Name"
+print(name)
+//the above code is nil.coalescing
+
 
 ## Question 2
 
 Given optional string `backgroundColor`, write code that safely unwraps and prints it. If backgroundColor is nil, give it a value.
 
 `var backgroundColor: String?`
+
+var backgroundColor: String?
+
+if let backgroundColor = backgroundColor {
+print("the background color is \(backgroundColor)")
+} else {
+print("the default background color is grey")
+}
+
 
 
 ## Question 3
@@ -32,6 +54,17 @@ var width: Double?
 var height: Double?
 ```
 
+var width: Double?
+var height: Double?
+
+if let width = width, let height = height {
+print(height * width)
+} else {
+print("error: go get your tape measure")
+}
+
+
+
 
 ## Question 4
 
@@ -42,6 +75,21 @@ var name: String?
 var age: Int?
 var height: Double?
 ```
+
+var name: String?
+var age: Int?
+var height: Double?
+
+if let name = name, let age = age, let height = height {
+print("\(name), \(age), \(height)")
+} else {
+print("error")
+}
+
+
+
+
+
 
 
 ## Question 5
@@ -55,11 +103,57 @@ var lastName: String = "Stone"
 ```
 
 
+var firstName: String = "Johnny"
+var middleName: String?
+var lastName: String = "Stone"
+var middle = middleName ?? ""
+var name = "\(firstName) \(middle) \(lastName)"
+
+func removeSpaces( text:String ) -> String {
+var result:String = ""
+var prevChar = " "
+
+for char in name {
+
+let currentChar = String(char)
+
+if !( prevChar == " " && currentChar == prevChar ) {
+
+result.append( currentChar)
+}
+prevChar = currentChar
+}
+
+return result
+}
+var fullName = removeSpaces (text:"\(name)")
+print(fullName)
+
+
+
+
+
+
+
+
+
 ## Question 6
 
 Write code that adds 15 to `myIntString`, then prints the sum. Use the `Int()` constructor which returns an optional Int `(Int?)`.
 
 `let myIntString = "35"`
+
+
+
+var myIntString = "35"
+var myOptionalInt = Int(myIntString)
+
+if let myOptionalInt = myOptionalInt {
+print(myOptionalInt + 15)
+}
+
+
+
 
 
 ## Question 7
@@ -75,7 +169,70 @@ var testCaseThree: (Int?, Int?, Int?)? = (5, 10, 24)
 ```
 
 
-## Question 8
+var scores: (Int?, Int?, Int?)?
+var sum = Int()
+
+var testCaseOne: (Int?, Int?, Int?)? = (4, nil, 7)
+if let testCaseOne = testCaseOne {
+if let indexOne = testCaseOne.0 {
+sum = sum + indexOne
+}
+}
+if let testCaseOne = testCaseOne {
+if let indexTwo = testCaseOne.1 {
+sum = sum + indexTwo
+}
+}
+if let testCaseOne = testCaseOne {
+if let indexThree = testCaseOne.2 {
+sum = sum + indexThree
+}
+}
+
+var testCaseTwo: (Int?, Int?, Int?)? = (nil, nil, 9)
+if let testCaseTwo = testCaseTwo {
+if let indexOne = testCaseTwo.0 {
+sum = sum + indexOne
+}
+}
+if let testCaseTwo = testCaseTwo {
+if let indexTwo = testCaseTwo.1 {
+sum = sum + indexTwo
+}
+}
+if let testCaseTwo = testCaseTwo {
+if let indexThree = testCaseTwo.2 {
+sum = sum + indexThree
+}
+}
+
+var testCaseThree: (Int?, Int?, Int?)? = (5, 10, 24)
+if let testCaseThree = testCaseThree {
+if let indexOne = testCaseThree.0 {
+sum = sum + indexOne
+}
+}
+if let testCaseThree = testCaseThree {
+if let indexTwo = testCaseThree.1 {
+sum = sum + indexTwo
+}
+}
+if let testCaseThree = testCaseThree {
+if let indexThree = testCaseThree.2 {
+sum = sum + indexThree
+}
+}
+print(sum)
+//
+
+
+
+
+
+
+
+## Question 8 
+NOT YET DONE, (i keep getting the error: "Variable 'unwrapped.0' used before being initialized" all my other code is commented out and i dont have a variable unwraped.0    I have tried to fix this for a while now but it makes no sense.  I'm not done and will figure it out)
 
 Safely unwrap `tuple` if there’s a non-nil tuple value and print it out.
 
@@ -85,6 +242,16 @@ if Bool.random() {
  tuple = (5, 3)
 }
 ```
+var tuple: (Int, Int)?
+var unwrapped: (Int, Int)
+
+if Bool.random() {
+tuple = (5, 3)
+if let tuple = tuple {
+unwrapped = tuple
+}
+}
+print(unwrapped)
 
 
 ## Question 9
